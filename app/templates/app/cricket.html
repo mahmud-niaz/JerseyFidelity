@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Cricket{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+  <div>
+   <a href="{%url 'cricket' %}" class="list-group-item list-group-item-action" aria-current="true">All Product</a>
+  </div>
+  </div>
+
+  <div class="col-sm-8">
+   <div class="row ">
+    {% for product in crickets %}
+    <div class="col-sm-4 text-center mb-4 border " >
+     <a href="{% url 'product-detail' product.id %}" class="btn">
+      <div class="item">
+       <img src="{{product.p_image.url}}" alt="" height="300" class="img-fluid">
+       <div class="fw-bold">{{ product.title }}</div>
+       <div class="fw-bold">Tk. {{ product.discounted_price }}</div>
+       <smal class="fw-light text-decoration-line-through">{{ product.selling_price }}</smal>
+      </div>
+     </a>
+    </div>
+    {% endfor %}
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
